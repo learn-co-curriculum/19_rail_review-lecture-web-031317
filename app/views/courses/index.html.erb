@@ -1,0 +1,17 @@
+<h1>COURSES!!!</h1>
+
+<% if session['guest_id'] %>
+  <p>I know that you have been here before... your id is <%= session['guest_id']%></p>
+<% end %>
+
+<ul>
+  <% @courses.each do |course| %>
+    <li>
+      <%= link_to(course.name, course) %> - <%= course.description %>
+    </li>
+  <% end %>
+</ul>
+
+<% if logged_in? %>
+  <%= link_to('Create a Course', new_course_path) %>
+<% end %>
